@@ -16,3 +16,9 @@ PARAMS:
 
 Url must be this format: "https://www.metacritic.com/movie/movie-name/user-reviews" where "movie-name" changes according to the movie we have selected
 
+*RESPONSES*
+
+1) If you typed -s 0, you'll get the reviews dataframe with all it's predictions and a confusion matrix of the model's performance
+
+2) If you typed -s 1, you'll get the predicted value for the input sentence
+

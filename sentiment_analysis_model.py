@@ -9,6 +9,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import sklearn as skl
 import math
+from sklearn.metrics import confusion_matrix
 
 #Creates a bag of words
 def bag_of_words(df, clear_words):
@@ -124,12 +125,14 @@ def concat_sentence(sentence, length):
     s_len = len(sentence)
     if s_len > length:
         return sentence
-    else:        
-        for i in range(math.ceil(length / s_len)):
+    else:
+        return (sentence + " ") * math.ceil(length / s_len) 
+
+'''        for i in range(math.ceil(length / s_len)):
             sentence = sentence + " " + sentence
         return sentence
 
-
+'''
 #Prediction functions
 def predict_one(sentence, model):
     sentence = concat_sentence(sentence, max_length)
@@ -147,7 +150,11 @@ def scrape_and_predict(reviews, model):
         prediction = model.predict(encoded_sentence)
         predictions_dict[i] = prediction[0][0]
     reviews['predicted'] = predictions_dict.values()
-    return reviews
+    reviews['predicted_binary'] = np.where(reviews['predicted'] >= 0.5, 1, 0)
+    reviews['rating_binary'] = np.where(reviews['rating'].astype(int) >= 5, 1, 0)
+
+    conf = confusion_matrix(reviews['rating_binary'], reviews['predicted_binary'])
+    return reviews, conf
 
 
 #Preparing model if required

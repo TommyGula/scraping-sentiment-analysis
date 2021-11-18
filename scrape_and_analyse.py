@@ -29,7 +29,7 @@ if __name__ == '__main__':
         predicted = predict_one(review, model)
         print("Predicted value for your review is: ", predicted[0][0])
     elif args.scrape == '0':
-        url = input("Paste page url you want to scrape or write '0' if you want to analyse just a sentence ")
+        url = input("Paste page url you want to scrape ")
         reviews = scrape(url)
         predicted = scrape_and_predict(reviews, model)
         print("Predicted values are:\n", predicted)
