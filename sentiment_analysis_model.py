@@ -125,6 +125,7 @@ def concat_sentence(sentence, length):
     s_len = len(sentence)
     if s_len > length:
         return sentence
+
     else:
         return (sentence + " ") * math.ceil(length / s_len) 
 

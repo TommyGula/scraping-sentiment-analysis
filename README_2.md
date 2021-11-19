@@ -1,4 +1,6 @@
+
 # SCRAPING SENTIMENT ANALYSIS
+
 *This is a project in which you can scrape all reviews from a specified review-web and analyse each one with a LSTM Neural Network.*
 
 If you just want to analyse a sentence with the NN, then you can!. This NN is previosly trained with NLTK movie_reviews dataset
